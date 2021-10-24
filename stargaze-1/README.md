@@ -68,7 +68,7 @@ Only nodes that participated in the testnet will be able to validate. Others wil
 
    ```bash
    starsd config chain-id stargaze-1
-   starsd init <MONIKER-NAME>
+   starsd init <MONIKER-NAME> --chain-id stargaze-1
    ```
 
 2. Create a local key pair (you should use the same key associated with you submitted for testnet rewards)
