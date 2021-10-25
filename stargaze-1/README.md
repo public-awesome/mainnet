@@ -90,10 +90,10 @@ Only nodes that participated in the testnet will be able to validate. Others wil
 4. Create the gentx, replace `<KEY-NAME>`:
 
    ```bash
-   starsd gentx <KEY-NAME> 10000000000ustars
+   starsd gentx <KEY-NAME> 10000000000ustars --commission-rate=0.05
    ```
 
-   Note, amounts other than `10000000000ustars` will fail in CI, you will be able to delegate the remainder of your testnet rewards after chain start.
+   Note, amounts other than `10000000000ustars` will fail in CI, you will be able to delegate the remainder of your testnet rewards after chain start. Commission should be set to at least 5%
 
    If all goes well, you will see a message similar to the following:
 
