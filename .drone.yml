@@ -1,0 +1,45 @@
+---
+kind: pipeline
+type: docker
+name: default-build
+
+steps:
+  - name: check
+    image: publicawesome/networks-check
+    environment:
+      GITHUB_TOKEN:
+        from_secret: github_token
+  - name: collect
+    image: publicawesome/stargaze:beta
+    commands:
+      - sh ./ci/check-gentx.sh
+  - name: runner
+    image: publicawesome/stargaze:beta
+    detach: true
+    commands:
+      - apk add jq
+      - sh ./ci/run.sh
+  - name: check_runner
+    image: alpine:3
+    commands:
+      - apk add curl
+      - apk add jq
+      - sh ./ci/check-running-node.sh
+  - name: failure
+    image: publicawesome/networks-check
+    settings:
+      failure: true
+    environment:
+      GITHUB_TOKEN:
+        from_secret: github_token
+    when:
+      status: [failure]
+trigger:
+  event:
+    - pull_request
+
+---
+kind: signature
+hmac: 8ce695c6936a1649487295ef0d6bad2fccb5567d478d865a8084997ddf7b4fda
+
+...
