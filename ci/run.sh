@@ -32,7 +32,11 @@ if [ -f "$FILE" ]; then
     sed -i 's#tcp://127.0.0.1:26657#tcp://0.0.0.0:26657#g' ~/.starsd/config/config.toml
     sed -i 's/stake/ustars/' ~/.starsd/config/genesis.json
     sed -i 's/pruning = "syncable"/pruning = "nothing"/g' ~/.starsd/config/app.toml
-    sed -i 's/enable = false/enable = true/g' ~/.starsd/config/app.toml
+    wget https://github.com/MinseokOh/toml-cli/releases/download/v0.1.0-beta/toml-cli_0.1.0-beta_Linux_x86_64.tar.gz
+    tar -xvf toml-cli_0.1.0-beta_Linux_x86_64.tar.gz 
+    chmod +x ./toml-cli
+    ./toml-cli set  ~/.starsd/config/app.toml api.enable false
+    ./toml-cli set  ~/.starsd/config/app.toml rosetta.enable false
     mkdir -p ~/.starsd/config/gentx
     echo "Processing validators..."
     for i in $CHAIN_ID/gentx/*.json; do
