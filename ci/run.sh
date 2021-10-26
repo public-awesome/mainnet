@@ -39,6 +39,7 @@ if [ -f "$FILE" ]; then
     ./toml-cli set  ~/.starsd/config/app.toml rosetta.enable false
     mkdir -p ~/.starsd/config/gentx
     cp ./stargaze-1/pre-genesis.json ~/.starsd/config/genesis.json
+    sed -i 's/2021-10-29T17:00:00Z/2021-10-25T17:00:00Z/' ~/.starsd/config/genesis.json
     echo "Processing validators..."
     for i in $CHAIN_ID/gentx/*.json; do
         cp $i ~/.starsd/config/gentx/
