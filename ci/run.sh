@@ -30,6 +30,7 @@ if [ -f "$FILE" ]; then
     vesting_end_time=$(($vesting_start_time + $LOCKUP))
 
     sed -i 's#tcp://127.0.0.1:26657#tcp://0.0.0.0:26657#g' ~/.starsd/config/config.toml
+    sed -i 's/stake/ustars/' ~/.starsd/config/genesis.json
     mkdir -p ~/.starsd/config/gentx
     echo "Processing validators..."
     for i in $CHAIN_ID/gentx/*.json; do
