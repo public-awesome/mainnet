@@ -25,12 +25,18 @@ steps:
       - apk add curl
       - apk add jq
       - sh ./ci/check-running-node.sh
+  - name: failure
+    image: publicawesome/networks-check
+    settings:
+      failure: true
+    when:
+      status: [failure]
 trigger:
   event:
     - pull_request
 
 ---
 kind: signature
-hmac: cdbf39d5abfccd57f87cf5e8a54f011842e7c642552011e9302b69600c45d53a
+hmac: d4604dba9adb0a03d462056b4205aca7822d8ac82fa3524512a61a212a9fcdfd
 
 ...
