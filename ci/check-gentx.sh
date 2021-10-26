@@ -7,6 +7,6 @@ if [ -f "$FILE" ]; then
     mkdir -p ~/.starsd/config/gentx
     cp "./$FILE_LOCATION" ~/.starsd/config/gentx/
     export ADDRESS=$(cat check-gen-tx)
-    cp ./stargaze-1/pre-genesis.json ~/.starsd/config/
+    cp ./stargaze-1/pre-genesis.json ~/.starsd/config/genesis.json
     starsd collect-gentxs
 fi
