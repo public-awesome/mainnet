@@ -35,16 +35,12 @@ if [ -f "$FILE" ]; then
     wget https://github.com/MinseokOh/toml-cli/releases/download/v0.1.0-beta/toml-cli_0.1.0-beta_Linux_x86_64.tar.gz
     tar -xvf toml-cli_0.1.0-beta_Linux_x86_64.tar.gz 
     chmod +x ./toml-cli
-    ./toml-cli set  ~/.starsd/config/app.toml api.enable false
+    ./toml-cli set  ~/.starsd/config/app.toml api.enable true
     ./toml-cli set  ~/.starsd/config/app.toml rosetta.enable false
     mkdir -p ~/.starsd/config/gentx
+    cp ./stargaze-1/pre-genesis.json ~/.starsd/config/genesis.json
     echo "Processing validators..."
     for i in $CHAIN_ID/gentx/*.json; do
-        echo $i
-        starsd add-genesis-account $(jq -r '.body.messages[0].delegator_address' $i) $VALIDATOR_COINS \
-            --vesting-amount $VALIDATOR_COINS \
-            --vesting-start-time $vesting_start_time \
-            --vesting-end-time $vesting_end_time
         cp $i ~/.starsd/config/gentx/
     done
     starsd collect-gentxs
