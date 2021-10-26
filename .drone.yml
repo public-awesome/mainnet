@@ -29,6 +29,9 @@ steps:
     image: publicawesome/networks-check
     settings:
       failure: true
+    environment:
+      GITHUB_TOKEN:
+        from_secret: github_token
     when:
       status: [failure]
 trigger:
@@ -37,6 +40,6 @@ trigger:
 
 ---
 kind: signature
-hmac: d4604dba9adb0a03d462056b4205aca7822d8ac82fa3524512a61a212a9fcdfd
+hmac: 8ce695c6936a1649487295ef0d6bad2fccb5567d478d865a8084997ddf7b4fda
 
 ...
