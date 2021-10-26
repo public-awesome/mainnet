@@ -6,7 +6,6 @@ _Planned Genesis Start Time: October 29th at 17:00 UTC._
 
 _Gentx submission deadline: October 28th at 17:00 UTC._
 
-
 ## Setup
 
 **Prerequisites:** Make sure to have [Golang >=1.17](https://golang.org/).
@@ -47,7 +46,6 @@ server_name: starsd
 version: TBD
 commit: TBD
 ```
-
 
 ### Minimum hardware requirements
 
@@ -90,7 +88,7 @@ Only nodes that participated in the testnet will be able to validate. Others wil
 4. Create the gentx, replace `<KEY-NAME>`:
 
    ```bash
-   starsd gentx <KEY-NAME> 10000000000ustars --commission-rate=0.05
+   starsd gentx <KEY-NAME> 10000000000ustars --commission-rate=0.05 --chain-id stargaze-1
    ```
 
    Note, amounts other than `10000000000ustars` will fail in CI, you will be able to delegate the remainder of your testnet rewards after chain start. Commission should be set to at least 5%
