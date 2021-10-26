@@ -13,26 +13,24 @@ steps:
     image: publicawesome/stargaze:beta
     commands:
       - sh ./ci/check-gentx.sh
-  - name: stargaze
+  - name: runner
     image: publicawesome/stargaze:beta
     detach: true
     commands:
       - apk add jq
       - sh ./ci/run.sh
-  - name: readiness
-    image: publicawesome/stargaze-readiness-checker:latest
-    settings:
-      check_file: check-gen-tx
-      timeout: 300
-      blocks: 50
-      chain_list:
-        - http://stargaze:26657
+  - name: check_runner
+    image: alpine:3
+    commands:
+      - apk add curl
+      - apk add jq
+      - sh ./ci/check-running-node.sh
 trigger:
   event:
     - pull_request
 
 ---
 kind: signature
-hmac: 9afd811fda772678db07df5e3dabcf9d250255d6ab9cae5d3609c6331315664d
+hmac: cdbf39d5abfccd57f87cf5e8a54f011842e7c642552011e9302b69600c45d53a
 
 ...
