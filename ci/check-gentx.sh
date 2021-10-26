@@ -7,5 +7,6 @@ if [ -f "$FILE" ]; then
     mkdir -p ~/.starsd/config/gentx
     cp "./$FILE_LOCATION" ~/.starsd/config/gentx/
     export ADDRESS=$(cat check-gen-tx)
+    starsd add-genesis-account $ADDRESS 10000000000stake
     starsd collect-gentxs
 fi
