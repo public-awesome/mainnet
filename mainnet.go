@@ -9,6 +9,8 @@ import (
 	"os/exec"
 	"strconv"
 	"time"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
 func main() {
@@ -23,6 +25,10 @@ func main() {
 
 	csv_file, _ := os.Open("stargaze-1/accounts/accounts.csv")
 	r := csv.NewReader(csv_file)
+	denom := "ustars"
+	total := sdk.NewCoin(denom, sdk.ZeroInt())
+	totalVesting := sdk.NewCoin(denom, sdk.ZeroInt())
+
 	for {
 		record, err := r.Read()
 		if err == io.EOF {
@@ -31,11 +37,21 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+		amount, ok := sdk.NewIntFromString(record[1])
+		if !ok {
+			panic(fmt.Sprintf("invalid amount %s", record[1]))
+		}
+		initialAmount := sdk.NewCoin(denom, amount)
+		accountBalance := initialAmount.Add(sdk.NewInt64Coin(denom, 1_000_000))
+
+		address := record[0]
+		total = total.Add(accountBalance)
+		totalVesting = totalVesting.Add(initialAmount)
 		cmd := exec.Command("starsd",
-			"add-genesis-account", record[0], record[1],
-			"--vesting-amount", record[1],
-			"--vesting-start-time", strconv.Itoa(int(start.Unix())),
-			"--vesting-end-time", strconv.Itoa(int(end.Unix())),
+			"add-genesis-account", address, accountBalance.String(),
+			"--vesting-amount", initialAmount.String(),
+			"--vesting-start-time", strconv.FormatInt(start.Unix(), 10),
+			"--vesting-end-time", strconv.FormatInt(end.Unix(), 10),
 			"--home", "tmp/stargaze",
 		)
 		cmd.Stdout = os.Stdout
@@ -45,4 +61,7 @@ func main() {
 			log.Fatal(err)
 		}
 	}
+	fmt.Println("total", total.Amount.Quo(sdk.NewInt(1_000_000)).String())
+	fmt.Println("total vesting", totalVesting.Amount.Quo(sdk.NewInt(1_000_000)).String())
+	fmt.Println("diff", total.Sub(totalVesting).Amount.Quo(sdk.NewInt(1_000_000)).String())
 }
