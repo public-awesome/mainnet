@@ -61,6 +61,11 @@ func main() {
 			log.Fatal(err)
 		}
 	}
+	// 50M stars
+	valAllocation := sdk.NewInt(50_000_000_000_000)
+	if total.Amount.GT(valAllocation) {
+		panic("failed allocation check")
+	}
 	fmt.Println("total", total.Amount.Quo(sdk.NewInt(1_000_000)).String())
 	fmt.Println("total vesting", totalVesting.Amount.Quo(sdk.NewInt(1_000_000)).String())
 	fmt.Println("diff", total.Sub(totalVesting).Amount.Quo(sdk.NewInt(1_000_000)).String())
