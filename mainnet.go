@@ -41,15 +41,15 @@ func main() {
 		if !ok {
 			panic(fmt.Sprintf("invalid amount %s", record[1]))
 		}
-		initialAmount := sdk.NewCoin(denom, amount)
-		accountBalance := initialAmount.Add(sdk.NewInt64Coin(denom, 1_000_000))
+		vestingAmount := sdk.NewCoin(denom, amount)
+		accountBalance := vestingAmount.Add(sdk.NewInt64Coin(denom, 1_000_000))
 
 		address := record[0]
 		total = total.Add(accountBalance)
-		totalVesting = totalVesting.Add(initialAmount)
+		totalVesting = totalVesting.Add(vestingAmount)
 		cmd := exec.Command("starsd",
 			"add-genesis-account", address, accountBalance.String(),
-			"--vesting-amount", initialAmount.String(),
+			"--vesting-amount", vestingAmount.String(),
 			"--vesting-start-time", strconv.FormatInt(start.Unix(), 10),
 			"--vesting-end-time", strconv.FormatInt(end.Unix(), 10),
 			"--home", "tmp/stargaze",
@@ -60,6 +60,11 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+	}
+	// 50M stars
+	valAllocation := sdk.NewInt(50_000_000_000_000)
+	if total.Amount.GT(valAllocation) {
+		panic("failed allocation check")
 	}
 	fmt.Println("total", total.Amount.Quo(sdk.NewInt(1_000_000)).String())
 	fmt.Println("total vesting", totalVesting.Amount.Quo(sdk.NewInt(1_000_000)).String())
