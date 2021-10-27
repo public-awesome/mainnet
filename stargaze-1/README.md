@@ -24,7 +24,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 ```bash
 git clone https://github.com/public-awesome/stargaze
 cd stargaze
-git checkout v1.0.0-alpha
+git checkout v1.0.0-alpha.1
 make build && make install
 ```
 
