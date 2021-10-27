@@ -22,3 +22,5 @@ starsd add-genesis-account stars1g457jcltvqdpt50ysq8fe2e7hwtnmnlmc2mkht 30000000
     --vesting-amount 30000000000000ustars \
     --vesting-start-time $vesting_start_time \
     --vesting-end-time $vesting_end_time
+
+starsd validate-genesis
