@@ -124,7 +124,7 @@ Only nodes that participated in the testnet will be able to validate. Others wil
 
 **Note, we'll be going through some upgrades soon after Stargaze mainnet. Consider using [Cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to make your life easier.**
 
-Download genesis file when the time is right. Put it in your `/home/<YOUR-USERNAME>/.starsd` folder.
+Download genesis file when the time is right. Put it in your `/home/<YOUR-USERNAME>/.starsd/config/` folder.
 
 Create a systemd file for your Stargaze service:
 
