@@ -51,10 +51,35 @@ steps:
       - apk add tar jq
       - sh ./ci/bootstrap-full-test.sh
   - name: node0
-    pull: always
+    detach: true
     image: publicawesome/stargaze:beta
     commands:
-      - starsd start --home $PWD/tmp/ci-testnet/node0/starsd 
+      - starsd start --home $PWD/tmp/ci-testnet/node0/starsd
+  - name: node1
+    detach: true
+    image: publicawesome/stargaze:beta
+    commands:
+      - starsd start --home $PWD/tmp/ci-testnet/node1/starsd
+  - name: node2
+    detach: true
+    image: publicawesome/stargaze:beta
+    commands:
+      - starsd start --home $PWD/tmp/ci-testnet/node2/starsd 
+  - name: node3
+    detach: true
+    image: publicawesome/stargaze:beta
+    commands:
+      - starsd start --home $PWD/tmp/ci-testnet/node3/starsd
+  - name: readiness
+    image: publicawesome/stargaze-readiness-checker:latest
+    settings:
+      timeout: 300
+      blocks: 100
+      chain_list:
+        - http://node0:26657
+        - http://node1:26657
+        - http://node2:26657
+        - http://node3:26657
 trigger:
   branch:
     - feature/full-test
@@ -63,6 +88,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: e8947e6b657acf51292542e3fc1c05be4b176c14ea4cfea7d142ad45f2179d29
+hmac: d94cd666d174e942cc223ba244c062058d570f91d83a44177058a2a36e9a0bb9
 
 ...
