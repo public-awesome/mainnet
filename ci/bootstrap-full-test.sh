@@ -30,3 +30,10 @@ starsd prepare-genesis testnet stargaze-1 snapshot.json --home $STARGAZE_HOME
 starsd collect-gentxs --home $STARGAZE_HOME > /dev/null 2>&1
 echo $?
 starsd validate-genesis --home $STARGAZE_HOME
+i=0
+while [ $i -ne 4 ]
+do
+    echo "$i"
+    cp $GENTXS/genesis.json "mytestnet/node$i/starsd/config/"
+    i=$(($i+1))
+done
