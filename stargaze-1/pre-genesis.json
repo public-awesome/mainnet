@@ -191,6 +191,27 @@
           "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
           "base_vesting_account": {
             "base_account": {
+              "address": "stars1487c4zgh9lfgm2tpvenl58832wzsm64ws0j5p3",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "ustars",
+                "amount": "62443000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1698598800"
+          },
+          "start_time": "1667062800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
               "address": "stars14ftwwcfvhnp3qvxawesjan5duh8rmrkrfnc58u",
               "pub_key": null,
               "account_number": "0",
@@ -1892,6 +1913,27 @@
           "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
           "base_vesting_account": {
             "base_account": {
+              "address": "stars1ukmcfrhmdszecgvrnz45tczfd6789hqgcy4zn7",
+              "pub_key": null,
+              "account_number": "0",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "ustars",
+                "amount": "36731000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1698598800"
+          },
+          "start_time": "1667062800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
               "address": "stars1up3r2ha96wktlek3fvjrsnqaglvh09egd9yulk",
               "pub_key": null,
               "account_number": "0",
@@ -3046,6 +3088,15 @@
           ]
         },
         {
+          "address": "stars1487c4zgh9lfgm2tpvenl58832wzsm64ws0j5p3",
+          "coins": [
+            {
+              "denom": "ustars",
+              "amount": "62444000000"
+            }
+          ]
+        },
+        {
           "address": "stars14ftwwcfvhnp3qvxawesjan5duh8rmrkrfnc58u",
           "coins": [
             {
@@ -3307,6 +3358,15 @@
           ]
         },
         {
+          "address": "stars1ukmcfrhmdszecgvrnz45tczfd6789hqgcy4zn7",
+          "coins": [
+            {
+              "denom": "ustars",
+              "amount": "36732000000"
+            }
+          ]
+        },
+        {
           "address": "stars1ah9en7z47gkhe7tfydfwp78z4u5td5y52n5ll4",
           "coins": [
             {
@@ -3497,7 +3557,7 @@
       },
       "params": {
         "mint_denom": "ustars",
-        "start_time": "2022-10-27T16:58:07.308404332Z",
+        "start_time": "2022-10-28T03:43:01.864476995Z",
         "initial_annual_provisions": "1000000000000000.000000000000000000",
         "reduction_factor": "0.666666666666666666",
         "blocks_per_year": "6311520"
