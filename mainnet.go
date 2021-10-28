@@ -66,20 +66,39 @@ func main() {
 	if total.Amount.Sub(sdk.NewInt(100_000_000_000_000)).GT(valAllocation) {
 		panic("failed allocation check")
 	}
-	fmt.Println("total", total.Amount.Quo(sdk.NewInt(1_000_000)).String())
+	fmt.Println("---partial---")
+	fmt.Println("partial total", total.Amount.Quo(sdk.NewInt(1_000_000)).String())
 	fmt.Println("total vesting", totalVesting.Amount.Quo(sdk.NewInt(1_000_000)).String())
 	fmt.Println("diff", total.Sub(totalVesting).Amount.Quo(sdk.NewInt(1_000_000)).String())
 
-	// community pool
-	communityPool := sdk.NewCoin(denom, sdk.NewInt(25_000_000_000_000))
-	cmd := exec.Command("starsd",
-		"add-genesis-account", "stars13nh557xzyfdm6csyp0xslu939l753sdlgdc2q0", communityPool.String(),
-		"--home", "tmp/stargaze",
-	)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	err = cmd.Run()
-	if err != nil {
-		log.Fatal(err)
+	accs := []struct {
+		address string
+		amount  sdk.Coin
+	}{
+		{
+			"stars13nh557xzyfdm6csyp0xslu939l753sdlgdc2q0",
+			sdk.NewInt64Coin(denom, 200_000_000_000_000),
+		},
+		{
+			"stars1xqz6xujjyz0r9uzn7srasle5uynmpa0zkjr5l8",
+			sdk.NewInt64Coin(denom, 400_000_000_000_000),
+		},
 	}
+	for _, a := range accs {
+		cmd := exec.Command("starsd",
+			"add-genesis-account", a.address, a.amount.String(),
+			"--home", "tmp/stargaze",
+		)
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		err = cmd.Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+		total = total.Add(a.amount)
+	}
+	fmt.Println("--Supply--")
+	fmt.Println("total vesting", totalVesting.Amount.Quo(sdk.NewInt(1_000_000)).String())
+	fmt.Println("total", total.Amount.Quo(sdk.NewInt(1_000_000)).String())
+
 }
