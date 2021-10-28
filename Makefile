@@ -8,3 +8,10 @@ generate:
 	sed -i 's/stake/ustars/' stargaze-1/pre-genesis.json
 ci-sign:
 	drone sign public-awesome/mainnet --save  
+run-local:
+	sh ./scripts/local-network.sh
+	cd tmp/local-testnet && docker-compose up
+force-cleanup:
+	sudo rm -rf tmp/
+force-run-local: force-cleanup run-local
+
