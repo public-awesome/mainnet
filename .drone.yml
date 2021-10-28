@@ -41,13 +41,14 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: full test
+name: full_test
 
 steps:
   - name: bootstrap
+    pull: always
     image: publicawesome/stargaze:beta
     commands:
-      - apk add tar
+      - apk add tar jq
       - sh ./ci/bootstrap-full-test.sh
 trigger:
   branch:
@@ -57,6 +58,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: fee9a0619a0a3938ce648de45e67648aa336d02226c78bcc52693087a7d1fddf
+hmac: 6ecdac6d3c26c9f4053a6e7d2f340890392cd3c0d9321de9f1178aed9e314afd
 
 ...
