@@ -63,10 +63,23 @@ func main() {
 	}
 	// 50M stars
 	valAllocation := sdk.NewInt(50_000_000_000_000)
-	if total.Amount.GT(valAllocation) {
+	if total.Amount.Sub(sdk.NewInt(100_000_000_000_000)).GT(valAllocation) {
 		panic("failed allocation check")
 	}
 	fmt.Println("total", total.Amount.Quo(sdk.NewInt(1_000_000)).String())
 	fmt.Println("total vesting", totalVesting.Amount.Quo(sdk.NewInt(1_000_000)).String())
 	fmt.Println("diff", total.Sub(totalVesting).Amount.Quo(sdk.NewInt(1_000_000)).String())
+
+	// community pool
+	communityPool := sdk.NewCoin(denom, sdk.NewInt(25_000_000_000_000))
+	cmd := exec.Command("starsd",
+		"add-genesis-account", "stars13nh557xzyfdm6csyp0xslu939l753sdlgdc2q0", communityPool.String(),
+		"--home", "tmp/stargaze",
+	)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	err = cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
