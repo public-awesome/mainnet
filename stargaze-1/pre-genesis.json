@@ -2615,6 +2615,13 @@
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "stars1yu27wfrxffktuuj0za407tfs3eahjpeqctk65g",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
         }
       ]
     },
@@ -2751,6 +2758,15 @@
           ]
         },
         {
+          "address": "stars1yu27wfrxffktuuj0za407tfs3eahjpeqctk65g",
+          "coins": [
+            {
+              "denom": "ustars",
+              "amount": "1000000000000"
+            }
+          ]
+        },
+        {
           "address": "stars1yad4khtgn79s7dcdm7lupadlhvhgrwp3v2jwm4",
           "coins": [
             {
@@ -2809,7 +2825,7 @@
           "coins": [
             {
               "denom": "ustars",
-              "amount": "400000000000000"
+              "amount": "399000000000000"
             }
           ]
         },
@@ -3859,7 +3875,7 @@
       },
       "params": {
         "mint_denom": "ustars",
-        "start_time": "2022-10-28T14:41:00.840317868Z",
+        "start_time": "2022-10-28T20:53:15.783674Z",
         "initial_annual_provisions": "1000000000000000.000000000000000000",
         "reduction_factor": "0.666666666666666666",
         "blocks_per_year": "6311520"
