@@ -34,6 +34,6 @@ i=0
 while [ $i -ne 4 ]
 do
     echo "$i"
-    cp $GENTXS/genesis.json "mytestnet/node$i/starsd/config/"
+    cp $STARGAZE_HOME/config/genesis.json "tmp/ci-testnet/node$i/starsd/config/"
     i=$(($i+1))
 done
