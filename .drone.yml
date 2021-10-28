@@ -73,8 +73,8 @@ steps:
   - name: readiness
     image: publicawesome/stargaze-readiness-checker:latest
     settings:
-      timeout: 300
-      blocks: 100
+      timeout: 900
+      blocks: 101
       chain_list:
         - http://node0:26657
         - http://node1:26657
@@ -82,12 +82,12 @@ steps:
         - http://node3:26657
 trigger:
   branch:
-    - feature/full-test
+    - main
   event:
     - pull_request
     - push
 ---
 kind: signature
-hmac: d94cd666d174e942cc223ba244c062058d570f91d83a44177058a2a36e9a0bb9
+hmac: 1098bf1eca8133cca3d258e1813959b1d0c17bd1712816d3d2d86ce34aed2582
 
 ...
