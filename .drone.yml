@@ -50,6 +50,11 @@ steps:
     commands:
       - apk add tar jq
       - sh ./ci/bootstrap-full-test.sh
+  - name: node0
+    pull: always
+    image: publicawesome/stargaze:beta
+    commands:
+      - starsd start --home $PWD/tmp/ci-testnet/node0/starsd 
 trigger:
   branch:
     - feature/full-test
@@ -58,6 +63,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: 6ecdac6d3c26c9f4053a6e7d2f340890392cd3c0d9321de9f1178aed9e314afd
+hmac: e8947e6b657acf51292542e3fc1c05be4b176c14ea4cfea7d142ad45f2179d29
 
 ...
