@@ -39,7 +39,55 @@ trigger:
     - pull_request
 
 ---
+kind: pipeline
+type: docker
+name: full_test
+
+steps:
+  - name: bootstrap
+    pull: always
+    image: publicawesome/stargaze:beta
+    commands:
+      - apk add tar jq
+      - sh ./ci/bootstrap-full-test.sh
+  - name: node0
+    detach: true
+    image: publicawesome/stargaze:beta
+    commands:
+      - starsd start --home $PWD/tmp/ci-testnet/node0/starsd
+  - name: node1
+    detach: true
+    image: publicawesome/stargaze:beta
+    commands:
+      - starsd start --home $PWD/tmp/ci-testnet/node1/starsd
+  - name: node2
+    detach: true
+    image: publicawesome/stargaze:beta
+    commands:
+      - starsd start --home $PWD/tmp/ci-testnet/node2/starsd 
+  - name: node3
+    detach: true
+    image: publicawesome/stargaze:beta
+    commands:
+      - starsd start --home $PWD/tmp/ci-testnet/node3/starsd
+  - name: readiness
+    image: publicawesome/stargaze-readiness-checker:latest
+    settings:
+      timeout: 900
+      blocks: 101
+      chain_list:
+        - http://node0:26657
+        - http://node1:26657
+        - http://node2:26657
+        - http://node3:26657
+trigger:
+  branch:
+    - main
+  event:
+    - pull_request
+    - push
+---
 kind: signature
-hmac: 8ce695c6936a1649487295ef0d6bad2fccb5567d478d865a8084997ddf7b4fda
+hmac: 1098bf1eca8133cca3d258e1813959b1d0c17bd1712816d3d2d86ce34aed2582
 
 ...
