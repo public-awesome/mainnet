@@ -54,22 +54,22 @@ steps:
     detach: true
     image: publicawesome/stargaze:beta
     commands:
-      - starsd start --home $PWD/tmp/ci-testnet/node0/starsd
+      - starsd start --home $PWD/tmp/ci-testnet/node0/starsd --inv-check-period 10
   - name: node1
     detach: true
     image: publicawesome/stargaze:beta
     commands:
-      - starsd start --home $PWD/tmp/ci-testnet/node1/starsd
+      - starsd start --home $PWD/tmp/ci-testnet/node1/starsd --inv-check-period 10
   - name: node2
     detach: true
     image: publicawesome/stargaze:beta
     commands:
-      - starsd start --home $PWD/tmp/ci-testnet/node2/starsd 
+      - starsd start --home $PWD/tmp/ci-testnet/node2/starsd  --inv-check-period 10
   - name: node3
     detach: true
     image: publicawesome/stargaze:beta
     commands:
-      - starsd start --home $PWD/tmp/ci-testnet/node3/starsd
+      - starsd start --home $PWD/tmp/ci-testnet/node3/starsd --inv-check-period 10
   - name: readiness
     image: publicawesome/stargaze-readiness-checker:latest
     settings:
@@ -88,6 +88,6 @@ trigger:
     - push
 ---
 kind: signature
-hmac: 1098bf1eca8133cca3d258e1813959b1d0c17bd1712816d3d2d86ce34aed2582
+hmac: e26cf936ede962bc325ebbddb06768877f28ccc6699af38fa38fee8185adb9b6
 
 ...
