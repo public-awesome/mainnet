@@ -39,7 +39,24 @@ trigger:
     - pull_request
 
 ---
+kind: pipeline
+type: docker
+name: full test
+
+steps:
+  - name: bootstrap
+    image: publicawesome/stargaze:beta
+    commands:
+      - apk add tar
+      - sh ./ci/bootstrap-full-test.sh
+trigger:
+  branch:
+    - feature/full-test
+  event:
+    - pull_request
+    - push
+---
 kind: signature
-hmac: 8ce695c6936a1649487295ef0d6bad2fccb5567d478d865a8084997ddf7b4fda
+hmac: fee9a0619a0a3938ce648de45e67648aa336d02226c78bcc52693087a7d1fddf
 
 ...
