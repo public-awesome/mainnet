@@ -81,7 +81,11 @@ func main() {
 		},
 		{
 			"stars1xqz6xujjyz0r9uzn7srasle5uynmpa0zkjr5l8",
-			sdk.NewInt64Coin(denom, 400_000_000_000_000),
+			sdk.NewInt64Coin(denom, 399_000_000_000_000),
+		},
+		{
+			"stars1yu27wfrxffktuuj0za407tfs3eahjpeqctk65g",
+			sdk.NewInt64Coin(denom, 1_000_000_000_000),
 		},
 	}
 	for _, a := range accs {
