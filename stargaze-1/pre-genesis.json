@@ -3875,7 +3875,7 @@
       },
       "params": {
         "mint_denom": "ustars",
-        "start_time": "2022-10-28T20:53:15.783674Z",
+        "start_time": "2022-10-29T04:23:33.460571Z",
         "initial_annual_provisions": "1000000000000000.000000000000000000",
         "reduction_factor": "0.666666666666666666",
         "blocks_per_year": "6311520"
