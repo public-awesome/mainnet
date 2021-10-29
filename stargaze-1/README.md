@@ -155,6 +155,8 @@ Only nodes that participated in the testnet will be able to validate. Others wil
 
 **Note, we'll be going through some upgrades soon after Stargaze mainnet. Consider using [Cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to make your life easier.**
 
+[Cosmovisor quickstart](https://gist.github.com/bloqhub/ba04d09891bd59c21d9ff228eefadb62)
+
 Download genesis file when the time is right. Put it in your `/home/<YOUR-USERNAME>/.starsd/config/` folder.
 
 Create a `systemd` file for your Stargaze service:
@@ -171,13 +173,12 @@ After=network-online.target
 
 [Service]
 User=<YOUR_USERNAME>
-ExecStart=/home/<YOUR-USERNAME>/go/bin/starsd start --home /home/
+ExecStart=/home/<YOUR-USERNAME>/go/bin/starsd start
 # If using Cosmovisor...
 # ExecStart=/home/<YOUR-USERNAME>/go/bin/cosmovisor start
-<YOUR-USERNAME>/.starsd
 Restart=on-failure
 RestartSec=3
-LimitNOFILE=4096
+LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
