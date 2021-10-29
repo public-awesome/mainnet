@@ -6,7 +6,11 @@ generate:
 	go run mainnet.go
 	jq '.genesis_time="2021-10-29T17:00:00Z"' tmp/stargaze/config/genesis.json > stargaze-1/pre-genesis.json
 	# sed -i 's/stake/ustars/' stargaze-1/pre-genesis.json
-	sed -i '' -e 's/stake/ustars/g' stargaze-1/pre-genesis.json
+        if [ "$(uname)" = "Linux" ]; then
+	    sed -i 's/stake/ustars/' stargaze-1/pre-genesis.json
+	else
+	    sed -i '' -e 's/stake/ustars/g' stargaze-1/pre-genesis.json
+	fi
 
 ci-sign:
 	drone sign public-awesome/mainnet --save  
