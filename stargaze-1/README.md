@@ -8,7 +8,7 @@ _Gentx submission deadline: October 28th at 17:00 UTC._
 
 **Genesis File**
 
-[Genesis File](/stargaze-1/genesis.json):
+[Genesis File](/stargaze-1/genesis.tar.gz):
 
 ```bash
    curl -s  https://raw.githubusercontent.com/public-awesome/mainnet/main/stargaze-1/genesis.tar.gz > genesis.tar.gz
