@@ -25,8 +25,8 @@
     "alloc": {
       "params": {
         "distribution_proportions": {
-          "dao_rewards": "0.400000000000000000",
-          "developer_rewards": "0.100000000000000000"
+          "nft_incentives": "0.450000000000000000",
+          "developer_rewards": "0.150000000000000000"
         },
         "weighted_developer_rewards_receivers": []
       }
@@ -3875,7 +3875,7 @@
       },
       "params": {
         "mint_denom": "ustars",
-        "start_time": "2022-10-28T20:53:15.783674Z",
+        "start_time": "2022-10-29T04:53:01.308084Z",
         "initial_annual_provisions": "1000000000000000.000000000000000000",
         "reduction_factor": "0.666666666666666666",
         "blocks_per_year": "6311520"
