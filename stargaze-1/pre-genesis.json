@@ -2825,7 +2825,7 @@
           "coins": [
             {
               "denom": "ustars",
-              "amount": "399000000000000"
+              "amount": "402013846966397"
             }
           ]
         },
@@ -3875,7 +3875,7 @@
       },
       "params": {
         "mint_denom": "ustars",
-        "start_time": "2022-10-29T04:53:01.308084Z",
+        "start_time": "2022-10-29T06:34:10.713394Z",
         "initial_annual_provisions": "1000000000000000.000000000000000000",
         "reduction_factor": "0.666666666666666666",
         "blocks_per_year": "6311520"

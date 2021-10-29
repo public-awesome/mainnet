@@ -81,7 +81,7 @@ func main() {
 		},
 		{
 			"stars1xqz6xujjyz0r9uzn7srasle5uynmpa0zkjr5l8",
-			sdk.NewInt64Coin(denom, 399_000_000_000_000),
+			sdk.NewInt64Coin(denom, 402_013_846_966_397),
 		},
 		{
 			"stars1yu27wfrxffktuuj0za407tfs3eahjpeqctk65g",
