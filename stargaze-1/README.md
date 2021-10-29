@@ -4,8 +4,6 @@
 
 _Planned Genesis Start Time: October 29th at 17:00 UTC._
 
-_Gentx submission deadline: October 28th at 17:00 UTC._
-
 **Genesis File**
 
 [Genesis File](/stargaze-1/genesis.tar.gz):
@@ -30,6 +28,12 @@ name: stargaze
 server_name: starsd
 version: 1.0.0
 commit: bee49997775a45f9f6383d6ba8c1dbc67439a6b6
+```
+
+_NOTE: If you had run an older binary previously, you might get a panic on start. If so, please start fresh with:_
+
+```sh
+starsd unsafe-reset-all
 ```
 
 ## Setup
