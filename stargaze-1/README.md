@@ -6,6 +6,32 @@ _Planned Genesis Start Time: October 29th at 17:00 UTC._
 
 _Gentx submission deadline: October 28th at 17:00 UTC._
 
+**Genesis File**
+
+[Genesis File](/stargaze-1/genesis.json):
+
+```bash
+   curl -s  https://raw.githubusercontent.com/public-awesome/mainnet/main/stargaze-1/genesis.tar.gz > genesis.tar.gz
+   tar -C ~/.starsd/config/ -xvf genesis.tar.gz
+```
+
+**Genesis sha256**
+
+```bash
+jq -S -f normalize.jq  ~/.starsd/config/genesis.json | shasum -a 256
+a8f1c085b48d1c62d3634f5d49cf2432ef7832fa2b629f6bd3feba20ee554475
+```
+
+**starsd version**
+
+``` bash
+$ starsd version --long
+name: stargaze
+server_name: starsd
+version: 1.0.0
+commit: bee49997775a45f9f6383d6ba8c1dbc67439a6b6
+```
+
 ## Setup
 
 **Prerequisites:** Make sure to have [Golang >=1.17](https://golang.org/).
