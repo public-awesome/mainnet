@@ -4,6 +4,8 @@
 
 ## _Genesis Start Time: October 29th at 17:00 UTC_
 
+[Seed + peer list](https://hackmd.io/GRsY7WQVTVmIAjwznaKAMg)
+
 **Genesis File**
 
 Download the [genesis file](/stargaze-1/genesis.tar.gz):
