@@ -2,28 +2,30 @@
 
 ![Stargaze](https://stargaze.zone/OGImage1200x630.png)
 
-_Planned Genesis Start Time: October 29th at 17:00 UTC._
+## _Genesis Start Time: October 29th at 17:00 UTC_
 
 **Genesis File**
 
-[Genesis File](/stargaze-1/genesis.tar.gz):
+Download the [genesis file](/stargaze-1/genesis.tar.gz):
 
-```bash
-   curl -s  https://raw.githubusercontent.com/public-awesome/mainnet/main/stargaze-1/genesis.tar.gz > genesis.tar.gz
-   tar -C ~/.starsd/config/ -xvf genesis.tar.gz
+```sh
+curl -s  https://raw.githubusercontent.com/public-awesome/mainnet/main/stargaze-1/genesis.tar.gz > genesis.tar.gz
+tar -C ~/.starsd/config/ -xvf genesis.tar.gz
 ```
 
 **Genesis sha256**
 
-```bash
+```sh
 jq -S -f normalize.jq  ~/.starsd/config/genesis.json | shasum -a 256
+
 a8f1c085b48d1c62d3634f5d49cf2432ef7832fa2b629f6bd3feba20ee554475
 ```
 
 **starsd version**
 
-``` bash
-$ starsd version --long
+```sh
+starsd version --long
+
 name: stargaze
 server_name: starsd
 version: 1.0.0
@@ -45,9 +47,7 @@ starsd unsafe-reset-all
 You need to ensure your `GOPATH` configuration is correct. You might have to add these lines to your `.profile` or `.zshrc` if you don't have them already:
 
 ```bash
-export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export GO111MODULE=on
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 ```
 
@@ -55,7 +55,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 git clone https://github.com/public-awesome/stargaze
 cd stargaze
 git checkout v1.0.0
-make build && make install
+make install
 ```
 
 This will build and install `starsd` binary into `$GOPATH\bin`.
@@ -69,8 +69,9 @@ export GOPATH=~/go
 
 At the end, you should have a working `starsd` binary with the following version:
 
-```bash
-$ starsd version --long
+```sh
+starsd version --long
+
 name: stargaze
 server_name: starsd
 version: 1.0.0
@@ -81,11 +82,11 @@ commit: bee49997775a45f9f6383d6ba8c1dbc67439a6b6
 
 - 8GB RAM
 - 500GB of disk space
-- 1.6 GHz AMD64 CPU
+- 1.6 GHz AMD64 CPUs
 
 ## Setup validator node
 
-Below are the instructions to generate & submit your genesis transaction
+Below are the instructions to generate and submit your genesis transaction.
 
 ### Generate genesis transaction (pre-launch only)
 
@@ -156,7 +157,7 @@ Only nodes that participated in the testnet will be able to validate. Others wil
 
 Download genesis file when the time is right. Put it in your `/home/<YOUR-USERNAME>/.starsd/config/` folder.
 
-Create a systemd file for your Stargaze service:
+Create a `systemd` file for your Stargaze service:
 
 ```bash
 sudo nano /etc/systemd/system/starsd.service
@@ -170,7 +171,10 @@ After=network-online.target
 
 [Service]
 User=<YOUR_USERNAME>
-ExecStart=/home/<YOUR-USERNAME>/go/bin/starsd start --home /home/<YOUR-USERNAME>/.starsd
+ExecStart=/home/<YOUR-USERNAME>/go/bin/starsd start --home /home/
+# If using Cosmovisor...
+# ExecStart=/home/<YOUR-USERNAME>/go/bin/cosmovisor start
+<YOUR-USERNAME>/.starsd
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
