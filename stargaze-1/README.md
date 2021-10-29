@@ -50,7 +50,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 ```bash
 git clone https://github.com/public-awesome/stargaze
 cd stargaze
-git checkout v1.0.0-alpha.1
+git checkout v1.0.0
 make build && make install
 ```
 
@@ -69,8 +69,8 @@ At the end, you should have a working `starsd` binary with the following version
 $ starsd version --long
 name: stargaze
 server_name: starsd
-version: TBD
-commit: TBD
+version: 1.0.0
+commit: bee49997775a45f9f6383d6ba8c1dbc67439a6b6
 ```
 
 ### Minimum hardware requirements
