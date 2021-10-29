@@ -5,6 +5,8 @@ export STARGAZE_HOME=$HOME/.starsd
 export DENOM=ustars
 export CHAIN_ID=stargaze-1
 
+rm -rf $STARGAZE_HOME
+
 starsd init moniker --chain-id stargaze-1
 cp ./stargaze-1/pre-genesis.json $STARGAZE_HOME/config/genesis.json
 wget https://s3.amazonaws.com/genesis.publicawesome.dev/snapshot.tar.gz
