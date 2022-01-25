@@ -1,6 +1,6 @@
 # v2.0.0 Upgrade
 
-The upgrade is scheduled for block `1317621`, which should be about _15:30PM UTC on 25th January 2022_.
+The upgrade is scheduled for block `1317621`, which should be about _05:30PM UTC on 25th January 2022_.
 
 These instructions assume you are running Cosmovisor. Most mainnet validators are running Cosmovisor, and [a setup guide can be found here](https://docs.junonetwork.io/validators/setting-up-cosmovisor).
 
