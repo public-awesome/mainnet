@@ -4,6 +4,8 @@ The upgrade is scheduled for block `1317621`, which should be about _05:30PM UTC
 
 These instructions assume you are running Cosmovisor. Most mainnet validators are running Cosmovisor, and [a setup guide can be found here](https://docs.junonetwork.io/validators/setting-up-cosmovisor).
 
+NOTE: Cosmovisor will preform a full backup unless `UNSAFE_SKIP_BACKUP=true` is set as an environment variable.
+
 ```bash
 # get the new version (run inside the repo)
 git checkout main && git pull
