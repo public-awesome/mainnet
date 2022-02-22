@@ -13,7 +13,7 @@ git checkout v3.0.0
 make build && make install
 
 # check the version - should be v3.0.0
-# starsd version --long will be commit 62138d79f0b348449d5fb1e7838f9958842f879b
+# starsd version --long will be commit 6ee57f18714a6d94cc6205afcd1af2ab655f8f0f
 starsd version
 
 # make a dir if you've not
@@ -35,9 +35,8 @@ The following settings are recommended for application level `app.toml`, adjust 
 ```
 # IavlCacheSize set the size of the iavl tree cache.
 # Default cache size is 50mb.
-#
+# Increased to 100mb
 iavl-cache-size=1562500
-
 
 [wasm]
 # Set the following if you have a public rpc endpoint
