@@ -14,7 +14,7 @@ make build && make install
 
 # check the version - should be v3.0.0
 # starsd version --long will be commit 6ee57f18714a6d94cc6205afcd1af2ab655f8f0f
-starsd version
+$HOME/go/bin/starsd version
 
 # make a dir if you've not
 mkdir -p $DAEMON_HOME/cosmovisor/upgrades/v3/bin
