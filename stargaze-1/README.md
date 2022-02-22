@@ -2,9 +2,43 @@
 
 ![Stargaze](https://stargaze.zone/OGImage1200x630.png)
 
-_Planned Genesis Start Time: October 29th at 17:00 UTC._
+## _Genesis Start Time: October 29th at 17:00 UTC_
 
-_Gentx submission deadline: October 28th at 17:00 UTC._
+[Seed + peer list](https://hackmd.io/GRsY7WQVTVmIAjwznaKAMg)
+
+**Genesis File**
+
+Download the [genesis file](/stargaze-1/genesis.tar.gz):
+
+```sh
+curl -s  https://raw.githubusercontent.com/public-awesome/mainnet/main/stargaze-1/genesis.tar.gz > genesis.tar.gz
+tar -C ~/.starsd/config/ -xvf genesis.tar.gz
+```
+
+**Genesis sha256**
+
+```sh
+jq -S -f normalize.jq  ~/.starsd/config/genesis.json | shasum -a 256
+
+a8f1c085b48d1c62d3634f5d49cf2432ef7832fa2b629f6bd3feba20ee554475
+```
+
+**starsd version**
+
+```sh
+starsd version --long
+
+name: stargaze
+server_name: starsd
+version: 1.0.0
+commit: bee49997775a45f9f6383d6ba8c1dbc67439a6b6
+```
+
+_NOTE: If you had run an older binary previously, you might get a panic on start. If so, please start fresh with:_
+
+```sh
+starsd unsafe-reset-all
+```
 
 ## Setup
 
@@ -15,17 +49,15 @@ _Gentx submission deadline: October 28th at 17:00 UTC._
 You need to ensure your `GOPATH` configuration is correct. You might have to add these lines to your `.profile` or `.zshrc` if you don't have them already:
 
 ```bash
-export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export GO111MODULE=on
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 ```
 
 ```bash
 git clone https://github.com/public-awesome/stargaze
 cd stargaze
-git checkout v1.0.0-alpha.1
-make build && make install
+git checkout v1.0.0
+make install
 ```
 
 This will build and install `starsd` binary into `$GOPATH\bin`.
@@ -39,23 +71,24 @@ export GOPATH=~/go
 
 At the end, you should have a working `starsd` binary with the following version:
 
-```bash
-$ starsd version --long
+```sh
+starsd version --long
+
 name: stargaze
 server_name: starsd
-version: TBD
-commit: TBD
+version: 1.0.0
+commit: bee49997775a45f9f6383d6ba8c1dbc67439a6b6
 ```
 
 ### Minimum hardware requirements
 
 - 8GB RAM
 - 500GB of disk space
-- 1.6 GHz AMD64 CPU
+- 1.6 GHz AMD64 CPUs
 
 ## Setup validator node
 
-Below are the instructions to generate & submit your genesis transaction
+Below are the instructions to generate and submit your genesis transaction.
 
 ### Generate genesis transaction (pre-launch only)
 
@@ -124,9 +157,11 @@ Only nodes that participated in the testnet will be able to validate. Others wil
 
 **Note, we'll be going through some upgrades soon after Stargaze mainnet. Consider using [Cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html) to make your life easier.**
 
-Download genesis file when the time is right. Put it in your `/home/<YOUR-USERNAME>/.starsd` folder.
+[Cosmovisor quickstart](https://gist.github.com/bloqhub/ba04d09891bd59c21d9ff228eefadb62)
 
-Create a systemd file for your Stargaze service:
+Download genesis file when the time is right. Put it in your `/home/<YOUR-USERNAME>/.starsd/config/` folder.
+
+Create a `systemd` file for your Stargaze service:
 
 ```bash
 sudo nano /etc/systemd/system/starsd.service
@@ -140,10 +175,12 @@ After=network-online.target
 
 [Service]
 User=<YOUR_USERNAME>
-ExecStart=/home/<YOUR-USERNAME>/go/bin/starsd start --home /home/<YOUR-USERNAME>/.starsd
+ExecStart=/home/<YOUR-USERNAME>/go/bin/starsd start
+# If using Cosmovisor...
+# ExecStart=/home/<YOUR-USERNAME>/go/bin/cosmovisor start
 Restart=on-failure
 RestartSec=3
-LimitNOFILE=4096
+LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
