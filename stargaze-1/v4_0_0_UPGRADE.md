@@ -16,7 +16,7 @@ make build && make install
 # starsd version --long will be commit [pending-commit-id]
 $HOME/go/bin/starsd version
 
-# make a dir if you've not
+# make a dir if you haven't
 mkdir -p $DAEMON_HOME/cosmovisor/upgrades/v4/bin
 
 # if you are using cosmovisor you then need to copy this new binary
@@ -31,7 +31,7 @@ If you are not using Cosmovisor, then the chain will halt at the target height a
 
 ## WARNING: WasmVM 
 
-If the binary was compiled in the same machine where is going to run check it has linked the right version:
+If the binary was compiled on the same machine where it is going to run, check if it has linked the right version:
 ```bash
 ldd $BINARY_LOCATION/bin/starsd | grep vm
 >        libwasmvm.so => $HOME/go/pkg/mod/github.com/ !cosm!wasm/wasmvm@v1.0.0-beta10/api/libwasmvm.so (0x00007fadbf749000)
@@ -39,9 +39,9 @@ ldd $BINARY_LOCATION/bin/starsd | grep vm
  ```
 
 
-If you compile your binary in a different machine pay extra attention when doing to upgrade to have the correct libwasm version
+If you compile your binary on a different machine, pay extra attention to make sure you have the correct libwasm version
 
-This will require manual intervention to avoid running on a different vm before the upgrade.
+This will require manual intervention to avoid running on a different VM before the upgrade.
 
 You can specify the path in the serviced file unit.
 
