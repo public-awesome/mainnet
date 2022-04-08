@@ -52,7 +52,7 @@ This will require manual intervention to avoid running on a different VM before 
 You can specify the path in the serviced file unit.
 
 ```
-Environment="LD_LIBRARY_PATH=/root/libwasmvm/beta10"
+Environment="LD_LIBRARY_PATH=/home/[user]/libwasmvm/beta10"
 ```
 
 Verify that you don't have it in another path like `/usr/lib` or any other global paths.
