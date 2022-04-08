@@ -13,8 +13,14 @@ git checkout v4.0.0
 make build && make install
 
 # check the version - should be v4.0.0
-# starsd version --long will be commit [pending-commit-id]
-$HOME/go/bin/starsd version
+$HOME/go/bin/starsd version --long
+> name: stargaze
+> server_name: starsd
+> version: 4.0.0
+> commit: 80cfeaa4c7123e87de162b9d8038eacb7d7cbff4
+> build_tags: netgo,ledger
+> go: go version go1.18 linux/amd64
+
 
 # make a dir if you've not
 mkdir -p $DAEMON_HOME/cosmovisor/upgrades/v4/bin
