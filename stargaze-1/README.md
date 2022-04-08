@@ -207,6 +207,28 @@ Check logs:
 journalctl -u starsd -f
 ```
 
+## Settings Recommendations
+
+The following settings are recommended for application level `app.toml`, adjust based on your server specs.
+
+```
+# IavlCacheSize set the size of the iavl tree cache.
+# Default cache size is 50mb.
+# Increased to 100mb
+# iavl-cache-size = 3906250 for 32GB RAM or more
+iavl-cache-size=1562500
+
+[wasm]
+# Set the following if you have a public rpc endpoint
+simulation_gas_limit=50000000
+
+# This is the maximum sdk gas (wasm and storage) that we allow for any x/wasm "smart" queries
+query_gas_limit = 5000000
+
+# MemoryCacheSize in MiB not bytes
+memory_cache_size=1000
+```
+
 ### Learn more
 
 - [Stargaze Community Discord](https://discord.gg/QeJWCrE)
