@@ -22,10 +22,10 @@ $HOME/go/bin/starsd version --long
 > go: go version go1.18 linux/amd64
 
 # make a dir if you haven't
-mkdir -p $DAEMON_HOME/cosmovisor/upgrades/v4/bin
+mkdir -p $DAEMON_HOME/cosmovisor/upgrades/v5/bin
 
 # if you are using cosmovisor you then need to copy this new binary
-cp /home/<your-user>/go/bin/starsd $DAEMON_HOME/cosmovisor/upgrades/v4/bin
+cp /home/<your-user>/go/bin/starsd $DAEMON_HOME/cosmovisor/upgrades/v5/bin
 
 # find out what version you are about to run - should be v5.0.0
 $DAEMON_HOME/cosmovisor/upgrades/v5/bin/starsd version
