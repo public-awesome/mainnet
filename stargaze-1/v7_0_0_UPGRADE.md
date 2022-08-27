@@ -6,9 +6,11 @@ These instructions assume you are running Cosmovisor. Most mainnet validators ar
 
 NOTE: Cosmovisor will preform a full backup unless `UNSAFE_SKIP_BACKUP=true` is set as an environment variable.
 
-## Go version
+### Go version
 
-We recommend using go version 1.18.5 above which has the latest security updates.
+We recommend using go version 1.18.5 which has the latest security updates.
+
+### Build
 
 ```bash
 # get the new version (run inside the repo)
