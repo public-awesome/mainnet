@@ -1,6 +1,6 @@
 # v7.0.0 Upgrade
 
-The upgrade is scheduled for block `3626432`, which should be about _17:30 UTC on 30th August 2022_.
+The upgrade is scheduled for block `4448796`, which should be about _17:30 UTC on 30th August 2022_.
 
 These instructions assume you are running Cosmovisor. Most mainnet validators are running Cosmovisor, and [a setup guide can be found here](https://docs.stargaze.zone/nodes-and-validators/setting-up-cosmovisor.
 
