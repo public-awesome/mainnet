@@ -4,7 +4,7 @@ The upgrade is scheduled for block `7458568`, which should be about _15:30 UTC o
 
 These instructions assume you are running Cosmovisor. Most mainnet validators are running Cosmovisor, and [a setup guide can be found here](https://docs.stargaze.zone/nodes-and-validators/setting-up-cosmovisor).
 
-NOTE: Cosmovisor will preform a full backup unless `UNSAFE_SKIP_BACKUP=true` is set as an environment variable.
+**NOTE: Cosmovisor will preform a full backup unless `UNSAFE_SKIP_BACKUP=true` is set as an environment variable**
 
 ### Go version
 
@@ -40,3 +40,10 @@ $DAEMON_HOME/cosmovisor/upgrades/v9/bin/starsd version
 ```
 
 If you are not using Cosmovisor, then the chain will halt at the target height and you can manually switch over.
+
+### WasmVM Version
+
+```
+$> starsd q wasm libwasmvm-version
+1.1.1
+```
