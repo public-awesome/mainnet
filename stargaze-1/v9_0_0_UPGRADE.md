@@ -23,7 +23,7 @@ $HOME/go/bin/starsd version --long
 > name: stargaze
 > server_name: starsd
 > version: 9.0.0
-> commit:
+> commit: 6f0490e658692e896492ea605a08e73bec575b6e
 > build_tags: netgo,ledger
 > go: go version go1.20 linux/amd64
 
