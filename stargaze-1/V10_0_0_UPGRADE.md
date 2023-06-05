@@ -43,7 +43,7 @@ If you are not using Cosmovisor, then the chain will halt at the target height a
 
 ## WARNING: WasmVM
 
-After the v9 upgrade automatically halts the chain remove the wasm cache located in `rm -rf ~/.starsd/wasm/wasm/cache` and start the node
+After the v10 upgrade automatically halts the chain remove the wasm cache located in `rm -rf ~/.starsd/wasm/wasm/cache` and start the node
 
 If you see the following error stop the node remove the cache and start the node again.
 
