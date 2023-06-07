@@ -15,15 +15,15 @@ We recommend using go version 1.20.4 which has the latest security updates.
 ```bash
 # get the new version (run inside the repo)
 git fetch origin --tags
-git checkout v10.0.0
+git checkout v10.0.1
 make build && make install
 
-# check the version - should be v10.0.0
+# check the version - should be v10.0.1
 $HOME/go/bin/starsd version --long
 > name: stargaze
 > server_name: starsd
-> version: 10.0.0
-> commit: 6d4d6ba85c86bd412e91208753a092aca1e95460
+> version: 10.0.1
+> commit: 8ca01207d10ce0aff5b2b984635e6495d5c42198
 > build_tags: netgo,ledger
 > go: go version go1.20 linux/amd64
 
@@ -33,7 +33,7 @@ mkdir -p $DAEMON_HOME/cosmovisor/upgrades/v10/bin
 # if you are using cosmovisor you then need to copy this new binary
 cp /home/<your-user>/go/bin/starsd $DAEMON_HOME/cosmovisor/upgrades/v10/bin
 
-# find out what version you are about to run - should be v10.0.0
+# find out what version you are about to run - should be v10.0.1
 $DAEMON_HOME/cosmovisor/upgrades/v10/bin/starsd version
 
 
@@ -43,7 +43,7 @@ If you are not using Cosmovisor, then the chain will halt at the target height a
 
 ## WARNING: WasmVM
 
-After the v10 upgrade automatically halts the chain remove the wasm cache located in `rm -rf ~/.starsd/wasm/wasm/cache` and start the node with the new version.
+If you are using v10.0.0 instead of v10.0.1, after the v10 upgrade automatically halts the chain, remove the wasm cache located in `rm -rf ~/.starsd/wasm/wasm/cache` and start the node with the new version.
 
 If you see the following error stop the node remove the cache and start the node again.
 
