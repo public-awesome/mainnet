@@ -43,3 +43,16 @@ $DAEMON_HOME/cosmovisor/upgrades/v13/bin/starsd version
 ```
 
 If you are not using Cosmovisor, then the chain will halt at the target height and you can manually switch over.
+
+### System Requirements
+
+- At least 32GB RAM is recommended
+
+If you don't have enough RAM available it is also recommended creating a swap file that can prevent potential OOM kills.
+
+```bash
+sudo fallocate -l 64G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
