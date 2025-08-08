@@ -28,9 +28,9 @@ $HOME/go/bin/starsd version --long
 > server_name: starsd
 > version: 17.0.0
 
-# libwasmvm - 2.2.3
+# libwasmvm - 2.2.4
 starsd  q wasm libwasmvm-version
-> 2.2.3
+> 2.2.4
 # make a dir if you haven't
 mkdir -p $DAEMON_HOME/cosmovisor/upgrades/v17/bin
 
